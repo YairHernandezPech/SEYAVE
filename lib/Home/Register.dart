@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:seyave/Home/Register.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:seyave/Home/Login.dart';
 
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class CreateAccountPage extends StatefulWidget {
+  const CreateAccountPage({super.key});
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _CreateAccountPageState createState() => _CreateAccountPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _CreateAccountPageState extends State<CreateAccountPage> {
+  // Variable de estado para controlar la visibilidad del texto
   bool _obscureText = true;
+  bool _obscureRepeatText = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-
+          // Imagen de fondo
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -26,67 +28,32 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
+          // Degradado rojo (lado izquierdo)
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
                 colors: [
-                  const Color.fromARGB(255, 247, 40, 25).withOpacity(0.1),
+                  const Color.fromARGB(255, 247, 40, 25),
+                  const Color.fromARGB(255, 247, 40, 25),
                   const Color.fromARGB(255, 247, 40, 25).withOpacity(0.5),
-                  const Color.fromARGB(255, 247, 40, 25),
-                  const Color.fromARGB(255, 247, 40, 25),
+                  const Color.fromARGB(255, 247, 40, 25).withOpacity(0.1),
                 ],
-                stops: const [0.1, 0.4, 0.5, 1.0],
+                stops: const [0.0, 0.4, 0.7, 1.0],
               ),
             ),
           ),
           Center(
             child: Row(
               children: [
-                const Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(40.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Seguridad en tus ventas, más rápido, más ágil y más útil...',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                      ],
-                    ),
-                  ),
-                ),
+                // Lado izquierdo → Formulario
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Logo
-                      Image.asset(
-                        'assets/logo.png',
-                        width: 100,
-                        height: 100,
-                      ),
-                      const SizedBox(height: 10),
-                      const Text(
-                        'SEYAVE',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 40),
-
-                      // Login Form
+                      // Formulario
                       Container(
                         width: 350,
                         padding: const EdgeInsets.all(30),
@@ -104,6 +71,16 @@ class _LoginPageState extends State<LoginPage> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
+                            Text(
+                              'Crear cuenta',
+                              style: GoogleFonts.kronaOne(
+                                textStyle: const TextStyle(
+                                  fontSize: 18,
+                                  //fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 25),
                             TextField(
                               decoration: InputDecoration(
                                 hintText: 'Usuario',
@@ -132,13 +109,42 @@ class _LoginPageState extends State<LoginPage> {
                                     vertical: 15, horizontal: 15),
                                 suffixIcon: IconButton(
                                   icon: Icon(
-                                    _obscureText ? Icons.visibility : Icons.visibility_off,
+                                    _obscureText
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
                                     color: Colors.grey,
                                   ),
                                   onPressed: () {
-
                                     setState(() {
                                       _obscureText = !_obscureText;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                            TextField(
+                              obscureText: _obscureRepeatText,
+                              decoration: InputDecoration(
+                                hintText: 'Repetir contraseña',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  borderSide: BorderSide.none,
+                                ),
+                                filled: true,
+                                fillColor: Colors.grey[200],
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 15, horizontal: 15),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _obscureRepeatText
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: Colors.grey,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscureRepeatText = !_obscureRepeatText;
                                     });
                                   },
                                 ),
@@ -149,18 +155,21 @@ class _LoginPageState extends State<LoginPage> {
                               width: double.infinity,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  // Handle login
+                                  // Acción de crear cuenta
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color.fromARGB(255, 247, 40, 25),
-                                  padding: const EdgeInsets.symmetric(vertical: 15),
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 247, 40, 25),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 15),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5),
                                   ),
                                 ),
                                 child: const Text(
-                                  'Entrar',
-                                  style: TextStyle(fontSize: 18, color: Colors.white),
+                                  'Crear cuenta',
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.white),
                                 ),
                               ),
                             ),
@@ -172,20 +181,22 @@ class _LoginPageState extends State<LoginPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>const CreateAccountPage(),
+                                      builder: (context) =>
+                                          const LoginPage(),
                                     ),
                                   );
                                 },
                                 style: OutlinedButton.styleFrom(
                                   foregroundColor: Colors.red,
                                   side: const BorderSide(color: Colors.red),
-                                  padding: const EdgeInsets.symmetric(vertical: 15),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 15),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5),
                                   ),
                                 ),
                                 child: const Text(
-                                  'Crear cuenta',
+                                  'Regresar',
                                   style: TextStyle(fontSize: 18),
                                 ),
                               ),
@@ -194,6 +205,27 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+                // Lado derecho → Texto
+                const Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(40.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          'Seguridad en tus ventas, más rápido, más ágil y más útil...',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
