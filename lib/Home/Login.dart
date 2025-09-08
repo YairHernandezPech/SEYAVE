@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seyave/Home/HomePage.dart';
 import 'package:seyave/Home/Register.dart';
 
 
@@ -149,7 +150,13 @@ class _LoginPageState extends State<LoginPage> {
                               width: double.infinity,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  // Handle login
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const DashboardPage(),
+                                    ),
+                                  );
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color.fromARGB(255, 247, 40, 25),
