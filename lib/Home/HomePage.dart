@@ -61,11 +61,12 @@ class _DashboardPageState extends State<DashboardPage> {
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
                 colors: [
-                  const Color.fromARGB(255, 247, 40, 25).withOpacity(0.12),
-                  const Color.fromARGB(255, 247, 40, 25).withOpacity(0.45),
-                  const Color.fromARGB(255, 247, 40, 25).withOpacity(0.9),
+                  const Color.fromARGB(255, 247, 40, 25).withOpacity(0.1),
+                  const Color.fromARGB(255, 247, 40, 25).withOpacity(0.5),
+                  const Color.fromARGB(255, 247, 40, 25),
+                  const Color.fromARGB(255, 247, 40, 25),
                 ],
-                stops: const [0.0, 0.5, 1.0],
+                stops: const [0.1, 0.4, 0.5, 1.0],
               ),
             ),
           ),
@@ -114,8 +115,6 @@ class _DashboardPageState extends State<DashboardPage> {
                         iconColor: item["iconColor"],
                         indicatorColor: item["indicator"],
                         onTap: () {
-                          // manejador al tocar (por ahora vacío)
-                          // Puedes navegar según item["title"]
                         },
                       );
                     }).toList(),
@@ -156,7 +155,7 @@ class _MenuCardState extends State<_MenuCard> {
 
   @override
   Widget build(BuildContext context) {
-    final Color hoverColor = const Color(0xFFF72819); // Rojo del fondo
+    final Color hoverColor = const Color(0xFFF72819);
 
     return MouseRegion(
       onEnter: (_) => setState(() => _hover = true),
@@ -208,7 +207,6 @@ class _MenuCardState extends State<_MenuCard> {
                       ),
                     ),
                   ),
-                // contenido principal
                 Center(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
