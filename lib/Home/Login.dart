@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:seyave/Home/HomePage.dart';
+import 'package:seyave/Home/PageSelected.dart';
 import 'package:seyave/Home/Register.dart';
 
 
@@ -154,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          const DashboardPage(),
+                                          const PageSelected(),
                                     ),
                                   );
                                 },

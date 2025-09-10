@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class DashboardPage extends StatefulWidget {
-  const DashboardPage({super.key});
+class PageSelected extends StatefulWidget {
+  const PageSelected({super.key});
 
   @override
-  State<DashboardPage> createState() => _DashboardPageState();
+  State<PageSelected> createState() => _PageSelectedState();
 }
 
-class _DashboardPageState extends State<DashboardPage> {
+class _PageSelectedState extends State<PageSelected> {
   final List<Map<String, dynamic>> menuItems = [
     {
       "title": "Cajero",
