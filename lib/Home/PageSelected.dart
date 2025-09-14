@@ -8,44 +8,48 @@ class PageSelected extends StatefulWidget {
 }
 
 class _PageSelectedState extends State<PageSelected> {
-  final List<Map<String, dynamic>> menuItems = [
-    {
-      "title": "Cajero",
-      "icon": Icons.point_of_sale,
-      "iconBg": Colors.grey.shade100,
-      "iconColor": Colors.black54,
-      "indicator": null,
-    },
-    {
-      "title": "Ventas",
-      "icon": Icons.bar_chart,
-      "iconBg": Colors.grey.shade100,
-      "iconColor": Colors.black54,
-      "indicator": null,
-    },
-    {
-      "title": "Inventario",
-      "icon": Icons.inventory_2,
-      "iconBg": Colors.grey.shade100,
-      "iconColor": Colors.black54,
-      "indicator": Colors.blue,
-    },
-    {
-      "title": "Configuración",
-      "icon": Icons.settings,
-      "iconBg": Colors.grey.shade100,
-      "iconColor": Colors.black54,
-      "indicator": Colors.green,
-    },
-  ];
+final List<Map<String, dynamic>> menuItems = [
+  {
+    "index": 0,
+    "title": "Cajero",
+    "icon": Icons.point_of_sale,
+    "iconBg": Colors.grey,
+    "iconColor": Colors.black54,
+    "indicator": null,
+  },
+  {
+    "index": 1,
+    "title": "Ventas",
+    "icon": Icons.bar_chart,
+    "iconBg": Colors.grey,
+    "iconColor": Colors.black54,
+    "indicator": null,
+  },
+  {
+    "index": 2,
+    "title": "Inventario",
+    "icon": Icons.inventory_2,
+    "iconBg": Colors.grey,
+    "iconColor": Colors.black54,
+    "indicator": Colors.blue,
+  },
+  {
+    "index": 3,
+    "title": "Configuración",
+    "icon": Icons.settings,
+    "iconBg": Colors.grey,
+    "iconColor": Colors.black54,
+    "indicator": Colors.green,
+  },
+];
+
 
   @override
   Widget build(BuildContext context) {
-    final double boxWidth = 520; // ancho del contenedor blanco
+    final double boxWidth = 520;
     return Scaffold(
       body: Stack(
         children: [
-          // fondo con imagen
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -54,7 +58,6 @@ class _PageSelectedState extends State<PageSelected> {
               ),
             ),
           ),
-          // degradado rojo
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(

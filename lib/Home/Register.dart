@@ -10,7 +10,6 @@ class CreateAccountPage extends StatefulWidget {
 }
 
 class _CreateAccountPageState extends State<CreateAccountPage> {
-  // Variable de estado para controlar la visibilidad del texto
   bool _obscureText = true;
   bool _obscureRepeatText = true;
 
@@ -19,7 +18,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
     return Scaffold(
       body: Stack(
         children: [
-          // Imagen de fondo
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -28,7 +26,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               ),
             ),
           ),
-          // Degradado rojo (lado izquierdo)
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -47,13 +44,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
           Center(
             child: Row(
               children: [
-                // Lado izquierdo → Formulario
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Formulario
                       Container(
                         width: 350,
                         padding: const EdgeInsets.all(30),
@@ -76,7 +71,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                               style: GoogleFonts.kronaOne(
                                 textStyle: const TextStyle(
                                   fontSize: 18,
-                                  //fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
@@ -155,7 +149,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                               width: double.infinity,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  // Acción de crear cuenta
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
@@ -207,7 +200,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                     ],
                   ),
                 ),
-                // Lado derecho → Texto
                 const Expanded(
                   child: Padding(
                     padding: EdgeInsets.all(40.0),
