@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seyave/Home/Login.dart';
 
 class SideMenu extends StatefulWidget {
   final Function(int) onItemSelected;
@@ -38,10 +39,11 @@ class _SideMenuState extends State<SideMenu>
             onPressed: widget.onToggle,
           ),
           const SizedBox(height: 20),
-          _buildMenuItem(Icons.access_time, "Cajero", 0),
+          _buildMenuItem(Icons.point_of_sale, "Cajero", 0),
           _buildMenuItem(Icons.shopping_cart, "Ventas", 1),
           _buildMenuItem(Icons.inventory, "Inventario", 2),
           _buildMenuItem(Icons.settings, "Configuración", 3),
+          _buildMenuItem(Icons.exit_to_app, "Salir", -1), // 🔹 No depende de index
         ],
       ),
     );
@@ -49,8 +51,18 @@ class _SideMenuState extends State<SideMenu>
 
   Widget _buildMenuItem(IconData icon, String title, int index) {
     bool selected = widget.selectedIndex == index;
+
     return InkWell(
-      onTap: () => widget.onItemSelected(index),
+      onTap: () {
+        if (title == "Salir") {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const LoginPage()),
+          );
+        } else {
+          widget.onItemSelected(index);
+        }
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
         decoration: selected
@@ -62,14 +74,17 @@ class _SideMenuState extends State<SideMenu>
         child: Row(
           children: [
             Icon(icon, color: selected ? Colors.black : Colors.white),
+            if (widget.isOpen) const SizedBox(width: 10),
             if (widget.isOpen)
-              const SizedBox(width: 10),
-            if (widget.isOpen)
-              Text(
-                title,
-                style: TextStyle(
-                  color: selected ? Colors.black : Colors.white,
-                  fontWeight: FontWeight.bold,
+              Expanded(
+                child: Text(
+                  title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: selected ? Colors.black : Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
           ],

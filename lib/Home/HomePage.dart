@@ -1,24 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:seyave/Components/side_menu.dart';
 import 'package:seyave/Pages/Inventory.dart';
+// importa también tus otras páginas CajeroPage, VentasPage, ConfiguracionPage
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final int initialIndex;
+
+  const HomePage({super.key, this.initialIndex = 0});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int selectedIndex = 0;
+  late int selectedIndex;
   bool isMenuOpen = true;
 
   final List<Widget> pages = const [
-    //CajeroPage(),
-    //VentasPage(),
     InventarioPage(),
-    //ConfiguracionPage(),
+    InventarioPage(),
+    InventarioPage(),
+    InventarioPage(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.initialIndex;
+  }
 
   @override
   Widget build(BuildContext context) {

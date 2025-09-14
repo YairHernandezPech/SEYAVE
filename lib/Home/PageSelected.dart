@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seyave/Home/HomePage.dart';
 
 class PageSelected extends StatefulWidget {
   const PageSelected({super.key});
@@ -20,7 +21,7 @@ final List<Map<String, dynamic>> menuItems = [
   {
     "index": 1,
     "title": "Ventas",
-    "icon": Icons.bar_chart,
+    "icon": Icons.shopping_cart,
     "iconBg": Colors.grey,
     "iconColor": Colors.black54,
     "indicator": null,
@@ -28,7 +29,7 @@ final List<Map<String, dynamic>> menuItems = [
   {
     "index": 2,
     "title": "Inventario",
-    "icon": Icons.inventory_2,
+    "icon": Icons.inventory,
     "iconBg": Colors.grey,
     "iconColor": Colors.black54,
     "indicator": Colors.blue,
@@ -42,6 +43,7 @@ final List<Map<String, dynamic>> menuItems = [
     "indicator": Colors.green,
   },
 ];
+
 
 
   @override
@@ -118,9 +120,16 @@ final List<Map<String, dynamic>> menuItems = [
                         iconColor: item["iconColor"],
                         indicatorColor: item["indicator"],
                         onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => HomePage(initialIndex: item["index"]),
+                            ),
+                          );
                         },
                       );
                     }).toList(),
+
                   ),
                 ),
               ],
