@@ -26,7 +26,7 @@ class _SideMenuState extends State<SideMenu>
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       width: widget.isOpen ? 220 : 70,
-      color: Colors.red,
+      color: const Color.fromARGB(255, 247, 40, 25),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

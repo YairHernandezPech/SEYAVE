@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:seyave/Components/side_menu.dart';
+import 'package:seyave/Pages/Cajero.dart';
 import 'package:seyave/Pages/Inventory.dart';
 // importa también tus otras páginas CajeroPage, VentasPage, ConfiguracionPage
 
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   bool isMenuOpen = true;
 
   final List<Widget> pages = const [
-    InventarioPage(),
+    Cajero(),
     InventarioPage(),
     InventarioPage(),
     InventarioPage(),
