@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class Cajero extends StatefulWidget {
   const Cajero({super.key});
@@ -8,6 +10,12 @@ class Cajero extends StatefulWidget {
 }
 
 class _CajeroState extends State<Cajero> {
+  @override
+  void initState() {
+    super.initState();
+    initializeDateFormatting('es_ES', null);
+  }
+  
   final List<Map<String, dynamic>> ventaProductos = [
     {"nombre": "producto 1", "cantidad": 2, "precio": 2.0},
     {"nombre": "producto 1", "cantidad": 3, "precio": 2.0},
@@ -23,6 +31,10 @@ class _CajeroState extends State<Cajero> {
 
   @override
   Widget build(BuildContext context) {
+    final now = DateTime.now();// Fecha actual
+    String fechaFormateada = DateFormat('EEEE d \'de\' MMMM \'de\' y', 'es_ES').format(now);// Formato en español
+    fechaFormateada = fechaFormateada[0].toUpperCase() + fechaFormateada.substring(1);// Capitalizar la primera letra
+    
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -50,8 +62,8 @@ class _CajeroState extends State<Cajero> {
                               fontWeight: FontWeight.bold,
                               color: Colors.grey)),
                       const SizedBox(height: 8),
-                      const Text("Lunes 15 de abril de 2025:",
-                          style: TextStyle(fontSize: 16, color: Colors.grey)),
+                       Text(fechaFormateada,
+                          style: const TextStyle(fontSize: 16, color: Colors.grey)),
                       const SizedBox(height: 20),
                       // indicadores
                       Row(
