@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seyave/Components/Modal.dart';
 
 class InventarioPage extends StatefulWidget {
   const InventarioPage({super.key});
@@ -129,7 +130,9 @@ class _InventarioPageState extends State<InventarioPage> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        showProductModal(context);
+                      },
                       child: const Text(
                         "Agregar",
                         style: TextStyle(color: Colors.white, fontSize: 16),
